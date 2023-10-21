@@ -29,18 +29,45 @@ public class Main {
         if (op == 1) {
             while (op != 0) {
                 System.out.println("\n*** Menu ***");
-                System.out.println("1 - Adicionar novo contato");
+                System.out.println("1 - Adicionar em Telefone");
+                System.out.println("2 - Adicionar em Email");
+                System.out.println("3 - Adicionar em WhatsApp");
+                System.out.println("4- listar");
                 System.out.println("0 - para sair");
                 op = leitor.nextInt();
 
-                switch (op) {
-                    case 1:
-                        agenda.adicionarContato(contato);
-                        break;
-                
-                    default:
-                        break;
-                }
+                if (op >= 1 || op <= 4){
+                    String nomeTelefone;
+                    int telefone;
+                    if(op >= 1 || op<= 3){
+                        System.out.print("Nome: ");
+                        nomeTelefone = leitor.next();
+                        System.out.print("Telefone: ");
+                        telefone = leitor.nextInt();
+                    }
+                    
+
+                    switch (op) {
+                        case 1:
+                            System.out.print("Aniversário: ");
+                            int aniversario = leitor.nextInt();
+                            agenda.adicionarContato(new ContatoTelefone(nomeTelefone, telefone, aniversario));
+                            break;
+                        case 2:
+                            System.out.print("Email: ");
+                            String email = leitor.next();
+                            agenda.adicionarContato(new ContatoEmail(nomeTelefone, telefone, email));
+                            break;
+                        case 3:
+                            agenda.adicionarContato(new ContatoWhatsApp(nomeTelefone, telefone));
+                            break;
+                        case 4:
+                            agenda.listarContatos();
+                            break;
+                        default:
+                            break;
+                    }
+                }               
             }
         }    
     }

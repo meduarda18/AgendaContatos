@@ -8,6 +8,11 @@ public class ContatoTelefone extends Contato{
         this.aniversario = aniversario;
     }
 
+    @Override
+    public String toString() {
+        return "Nome: " + getNome() + ", Telefone: " + getContato();
+    }
+
     public int getAniversario() {
         return aniversario;
     }

@@ -17,6 +17,11 @@ public class ContatoEmail extends Contato{
         this.relacionamento = relacionamento;
     }
 
+    @Override
+    public String toString() {
+        return "Nome: " + getNome() + ", Email: " + email +", Telefone: " + getContato();
+    }
+
     public String getEmail() {
         return email;
     }

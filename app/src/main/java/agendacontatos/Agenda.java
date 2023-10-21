@@ -10,5 +10,11 @@ public class Agenda {
         contatos.add(contato);
     }
 
+    public void listarContatos(){
+        for (Contato contato : contatos) {
+            System.out.println(contato);
+        }
+    }
+
     
 }
