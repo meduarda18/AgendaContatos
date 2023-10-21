@@ -21,18 +21,27 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
+        Agenda agenda = new Agenda();
 
-        System.out.println("1- iniciar o app Agenda de Contatos \n2- não iniciar o app Agenda de Contatos");
+        System.out.println("1- iniciar o app Agenda de Contatos \n2- não iniciar o app Agenda de Contatos \n");
         int op = leitor.nextInt();
 
-        while (op != 2 || op == 0) {
-            System.out.println("--- Menu ---");
-            System.out.println("1 - Adicionar novo contato");
-            System.out.println("0 - para sair");
-            System.out.println("--- Menu ---");
-            op = leitor.nextInt();
-        }
+        if (op == 1) {
+            while (op != 0) {
+                System.out.println("\n*** Menu ***");
+                System.out.println("1 - Adicionar novo contato");
+                System.out.println("0 - para sair");
+                op = leitor.nextInt();
 
-        
+                switch (op) {
+                    case 1:
+                        agenda.adicionarContato(contato);
+                        break;
+                
+                    default:
+                        break;
+                }
+            }
+        }    
     }
 }
