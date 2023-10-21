@@ -37,15 +37,11 @@ public class Main {
                 op = leitor.nextInt();
 
                 if (op >= 1 || op <= 4){
-                    String nomeTelefone;
-                    int telefone;
-                    if(op >= 1 || op<= 3){
-                        System.out.print("Nome: ");
-                        nomeTelefone = leitor.next();
-                        System.out.print("Telefone: ");
-                        telefone = leitor.nextInt();
-                    }
-                    
+                    if(op >= 1 || op<= 3)
+                    System.out.print("Nome: ");
+                    String nomeTelefone = leitor.next();
+                    System.out.print("Telefone: ");
+                    int telefone = leitor.nextInt();
 
                     switch (op) {
                         case 1:
