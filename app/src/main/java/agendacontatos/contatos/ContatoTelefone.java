@@ -1,4 +1,4 @@
-package agendacontatos;
+package agendacontatos.contatos;
 
 public class ContatoTelefone extends Contato{
     private int aniversario;

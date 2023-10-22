@@ -1,4 +1,4 @@
-package agendacontatos;
+package agendacontatos.contatos;
 
 public class ContatoWhatsApp extends Contato{
 

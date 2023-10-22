@@ -21,51 +21,31 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
-        Agenda agenda = new Agenda();
 
-        System.out.println("1- Iniciar o app Agenda de Contatos \n2- Não iniciar o app Agenda de Contatos \nDigite o número da opção escolhida: ");
-        int op = leitor.nextInt();
+        System.out.print("1- Iniciar o app Agenda de Contatos \n2- Não iniciar o app Agenda de Contatos \nDigite o número da opcaoção escolhida: ");
+        int opcao = leitor.nextInt();
 
-        if (op == 1) {
-            while (op != 0) {
+        if (opcao == 1) {
+            Agenda agenda = new Agenda();
+            Menu menu = new Menu(agenda);
+
+            while (true) {
                 System.out.println("\n*** Menu ***");
-                System.out.println("1 - Adicionar em Telefone");
-                System.out.println("2 - Adicionar em Email");
-                System.out.println("3 - Adicionar em WhatsApp");
-                System.out.println("4- Listar");
+                System.out.println("1 - Adicionar contato");
+                System.out.println("2 - Remover contato");
+                System.out.println("3 - Atualizar conato");
+                System.out.println("4- Listar contatos");
                 System.out.println("0 - Sair");
-                op = leitor.nextInt();
-
-                if (op >= 1 || op <= 4){
-                    if(op >= 1 || op<= 3)
-                    System.out.print("Nome: ");
-                    String nomeTelefone = leitor.next();
-                    System.out.print("Telefone: ");
-                    int telefone = leitor.nextInt();
-
-                    switch (op) {
-                        case 1:
-                            System.out.print("Aniversário: ");
-                            int aniversario = leitor.nextInt();
-                            agenda.adicionarContato(new ContatoTelefone(nomeTelefone, telefone, aniversario));
-                            break;
-                        case 2:
-                            System.out.print("Email: ");
-                            String email = leitor.next();
-                            agenda.adicionarContato(new ContatoEmail(nomeTelefone, telefone, email));
-                            break;
-                        case 3:
-                            agenda.adicionarContato(new ContatoWhatsApp(nomeTelefone, telefone));
-                            break;
-                        case 4:
-                            agenda.listarContatos();
-                            break;
-                        default:
-                            break;
-                    }
-                }               
+                opcao = leitor.nextInt(); 
+                if (opcao == 0){
+                    break;
+                } else if (opcao == 1){
+                    menu.menuAdicionar(opcao); // recebeu argumento
+                } else if (opcao == 4){
+                    agenda.listarContatos();
+                }                  
             }
-        } 
-        leitor.close();    
+        }
+        leitor.close();
     }
 }

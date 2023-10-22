@@ -54,7 +54,7 @@ this.tipo = tipo;
 
 
 
-package agendacontatos;
+package agendacontatos.contatos;
 
 public class Contato {
     private String nome;

@@ -1,5 +1,6 @@
-package agendacontatos;
+package agendacontatos.contatos;
 
+import agendacontatos.RelacionamentoEmail;
 
 public class ContatoEmail extends Contato{
     private String email;
