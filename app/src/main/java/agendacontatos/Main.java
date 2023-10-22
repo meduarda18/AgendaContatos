@@ -23,7 +23,7 @@ public class Main {
         Scanner leitor = new Scanner(System.in);
         Agenda agenda = new Agenda();
 
-        System.out.println("1- iniciar o app Agenda de Contatos \n2- não iniciar o app Agenda de Contatos \n");
+        System.out.println("1- Iniciar o app Agenda de Contatos \n2- Não iniciar o app Agenda de Contatos \nDigite o número da opção escolhida: ");
         int op = leitor.nextInt();
 
         if (op == 1) {
@@ -32,8 +32,8 @@ public class Main {
                 System.out.println("1 - Adicionar em Telefone");
                 System.out.println("2 - Adicionar em Email");
                 System.out.println("3 - Adicionar em WhatsApp");
-                System.out.println("4- listar");
-                System.out.println("0 - para sair");
+                System.out.println("4- Listar");
+                System.out.println("0 - Sair");
                 op = leitor.nextInt();
 
                 if (op >= 1 || op <= 4){
@@ -65,6 +65,7 @@ public class Main {
                     }
                 }               
             }
-        }    
+        } 
+        leitor.close();    
     }
 }

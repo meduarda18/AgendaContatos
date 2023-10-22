@@ -29,7 +29,7 @@ public class ContatoEmail extends Contato{
         this.email = email;
     }
 
-        public RelacionamentoEmail getRelacionamento() {
+    public RelacionamentoEmail getRelacionamento() {
         return relacionamento;
     }
     public void setRelacionamento(RelacionamentoEmail relacionamento) {
