@@ -4,7 +4,7 @@ public class ContatoTelefone extends Contato{
     private int aniversario;
 
     public ContatoTelefone(String nome, int contato, int aniversario) {
-        super(nome, contato);
+        super(nome, contato, false);
         this.aniversario = aniversario;
     }
 
