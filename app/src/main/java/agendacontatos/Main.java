@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
 
-        System.out.print("1- Iniciar o app Agenda de Contatos \n2- Não iniciar o app Agenda de Contatos \nDigite o número da opcaoção escolhida: ");
+        System.out.print("1- Iniciar o app Agenda de Contatos \n2- Não iniciar o app Agenda de Contatos \nDigite o número da opção escolhida: ");
         int opcao = leitor.nextInt();
 
         if (opcao == 1) {
@@ -30,12 +30,8 @@ public class Main {
             Menu menu = new Menu(agenda);
 
             while (true) {
-                System.out.println("\n*** Menu ***");
-                System.out.println("1 - Adicionar contato");
-                System.out.println("2 - Remover contato");
-                System.out.println("3 - Atualizar conato");
-                System.out.println("4- Listar contatos");
-                System.out.println("0 - Sair");
+                System.out.println("\n*** Menu ***\n1 - Adicionar contato\n2 - Remover contato\n3 - Atualizar conato\n4 - Listar contatos\n0 - Sair");
+                
                 opcao = leitor.nextInt(); 
                 if (opcao == 0){
                     break;
