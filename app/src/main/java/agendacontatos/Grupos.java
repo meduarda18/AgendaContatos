@@ -1,6 +1,9 @@
 package agendacontatos;
 
 import java.util.List;
+
+import agendacontatos.contatos.Contato;
+
 import java.util.ArrayList;
 
 

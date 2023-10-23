@@ -39,7 +39,18 @@ public class Menu {
                     case 2:
                         System.out.print("Email: ");
                         String email = leitor.next();
-                        agenda.adicionarContato(new ContatoEmail(nomeTelefone, telefone, email));
+                        System.out.println("Deseja adicionar a alguma categoria? 1- sim 2-não");
+                        int escolha2 = leitor.nextInt();
+                        String relacionamento = null;    
+
+                        if (escolha2 == 1){
+                            relacionamento = agenda.categorias();
+                            
+                        } else {
+                            relacionamento = "Nenhum";
+                        }
+
+                        agenda.adicionarContato(new ContatoEmail(nomeTelefone, telefone, email, relacionamento));
                         break;
                     case 3:
                         agenda.adicionarContato(new ContatoWhatsApp(nomeTelefone, telefone));
