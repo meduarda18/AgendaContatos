@@ -35,6 +35,7 @@ public class Main {
                 System.out.println("2 - Remover contato");
                 System.out.println("3 - Atualizar conato");
                 System.out.println("4- Listar contatos");
+                
                 System.out.println("0 - Sair");
                 opcao = leitor.nextInt(); 
                 if (opcao == 0){

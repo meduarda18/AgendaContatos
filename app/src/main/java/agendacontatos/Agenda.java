@@ -36,5 +36,12 @@ public class Agenda {
         
     }
 
+    public void filtrar(){
+        Scanner leitor = new Scanner(System.in);
+        int buscaContato = leitor.nextInt();
+        List<Contato> contatosFiltrados = contatos.stream().filter(c -> c.getContato() == buscaContato).toList();
+        System.out.println(contatosFiltrados);
+    }
+
     
 }
