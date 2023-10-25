@@ -34,10 +34,13 @@ public class Agenda {
             return categoria[2];
         }
         
+        
     }
+    
 
     public void filtrar(){
         Scanner leitor = new Scanner(System.in);
+        System.out.println("Digite o número: ");
         int buscaContato = leitor.nextInt();
         List<Contato> contatosFiltrados = contatos.stream().filter(c -> c.getContato() == buscaContato).toList();
         System.out.println(contatosFiltrados);

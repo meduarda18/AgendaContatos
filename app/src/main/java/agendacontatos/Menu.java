@@ -17,11 +17,11 @@ public class Menu {
         Scanner leitor = new Scanner(System.in);
 
         while (opcaoAdicionar != 0 ) {
-            System.out.println("***\nMenu Adicionar ***");
-            System.out.println("1 - Adicionar em Telefone");
-            System.out.println("2 - Adicionar em Email");
-            System.out.println("3 - Adicionar em WhatsApp");
-            System.out.println("0 - Voltar");
+            System.out.println("***\nMenu Adicionar \n1 - Adicionar em Telefone\n2 - Adicionar em Email\n3 - Adicionar em WhatsApp\n0 - Voltar\n***");
+            //System.out.println("1 - Adicionar em Telefone");
+            //System.out.println("2 - Adicionar em Email");
+            //System.out.println("3 - Adicionar em WhatsApp");
+            //System.out.println("0 - Voltar");
             opcaoAdicionar = leitor.nextInt();
 
             if (opcaoAdicionar > 0) {
