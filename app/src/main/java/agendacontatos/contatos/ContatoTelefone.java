@@ -10,7 +10,7 @@ public class ContatoTelefone extends Contato{
 
     @Override
     public String toString() {
-        return "Nome: " + getNome() + ", Telefone: " + getContato();
+        return "\nContatos Telefone\nNome: " + getNome() + ", Telefone: " + getContato();
     }
 
     public int getAniversario() {
