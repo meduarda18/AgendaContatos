@@ -23,7 +23,7 @@ public class Agenda {
         String[] categoria = {"Favoritos", "Trabalho", "Pessoal"};
         Scanner leitor = new Scanner(System.in);
         
-        System.out.println("Escolha uma categoria:\n1- Favoritos, 2- Trabalho, 3- Pessoal");
+        System.out.print("1 - Favoritos\n2 - Trabalho\n3 - Pessoal\nEscolha uma categoria: ");
         int escolha = leitor.nextInt();
 
         if (escolha == 1) {
@@ -37,6 +37,14 @@ public class Agenda {
         
     }
     
+
+    public void filtrar(){
+        Scanner leitor = new Scanner(System.in);
+        System.out.println("Digite o número: ");
+        int buscaContato = leitor.nextInt();
+        List<Contato> contatosFiltrados = contatos.stream().filter(c -> c.getContato() == buscaContato).toList();
+        System.out.println(contatosFiltrados);
+    }
 
     
 }

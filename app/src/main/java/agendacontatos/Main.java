@@ -30,13 +30,17 @@ public class Main {
             Menu menu = new Menu(agenda);
 
             while (true) {
+
                 System.out.print("\n*** Menu ***\n1 - Adicionar contato\n2 - Remover contato\n3 - Atualizar contato\n4 - Listar contatos\n0 - Sair\nDigite a opção escolhida: ");
+
                 
                 opcao = leitor.nextInt(); 
                 if (opcao == 0){
                     break;
                 } else if (opcao == 1){
-                    menu.menuAdicionar(opcao); // recebeu argumento
+                    menu.menuAdicionar(opcao);
+                } else if (opcao == 3){
+                    agenda.filtrar(); // recebeu argumento
                 } else if (opcao == 4){
                     agenda.listarContatos();
                 } else if (opcao == 2){
