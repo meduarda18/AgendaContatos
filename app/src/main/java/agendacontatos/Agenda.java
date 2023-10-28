@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import java.util.Optional;
+
 import agendacontatos.contatos.Contato;
 
 public class Agenda {
     private List<Contato> contatos = new ArrayList<>();
+    Scanner leitor = new Scanner(System.in);
 
     public void adicionarContato(Contato contato) {
         contatos.add(contato);
@@ -21,7 +24,6 @@ public class Agenda {
 
     public String categorias(){
         String[] categoria = {"Favoritos", "Trabalho", "Pessoal"};
-        Scanner leitor = new Scanner(System.in);
         
         System.out.println("Escolha uma categoria:\n1- Favoritos, 2- Trabalho, 3- Pessoal");
         int escolha = leitor.nextInt();
@@ -39,12 +41,36 @@ public class Agenda {
     
 
     public void filtrar(){
-        Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o número: ");
         int buscaContato = leitor.nextInt();
-        List<Contato> contatosFiltrados = contatos.stream().filter(c -> c.getContato() == buscaContato).toList();
-        System.out.println(contatosFiltrados);
+        List<Contato> contatoFiltrado = contatos.stream().filter(c -> c.getContato() == buscaContato).toList();
+        System.out.println(contatoFiltrado);
     }
+
+    public void excluir(){
+        System.out.println("Digite o número: ");
+        int buscaContato = leitor.nextInt();
+        List<Contato> contatoFiltrado = contatos.stream().filter(c -> c.getContato() == buscaContato).toList();
+        contatos.removeAll(contatoFiltrado);
+    }
+
+    public void editar(){
+        System.out.println("Digite o número: ");
+        int buscaContato = leitor.nextInt();
+        Optional<Contato> contatoParaEditar = contatos.stream().filter(c -> c.getContato() == buscaContato).findFirst(); // retorna o primeiro que aparecer
+
+        Contato contato = contatoParaEditar.get(); 
+
+        System.out.println("Novo nome: ");
+        String novoNome = leitor.next();
+        contato.setNome(novoNome);
+
+        System.out.println("Novo Contato: ");
+        int novoContato = leitor.nextInt();
+        contato.setContato(novoContato);
+    }
+
+
 
     
 }
