@@ -36,5 +36,17 @@ public class ContatoEmail extends Contato{
         this.relacionamento = relacionamento;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        ContatoEmail outro = (ContatoEmail) obj;
+        return getContato() == outro.getContato();
+    }
+
 }
 

@@ -21,4 +21,17 @@ public class ContatoTelefone extends Contato{
         this.aniversario = aniversario;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        ContatoTelefone outro = (ContatoTelefone) obj;
+        return getContato() == outro.getContato();
+    }
+
+
 }

@@ -3,24 +3,26 @@ package agendacontatos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.stream.Collectors;
 import java.util.Optional;
 
 import agendacontatos.contatos.Contato;
+import agendacontatos.contatos.ContatoEmail;
+import agendacontatos.contatos.ContatoTelefone;
+import agendacontatos.contatos.ContatoWhatsApp;
 
 public class Agenda {
     private List<Contato> contatos = new ArrayList<>();
     Scanner leitor = new Scanner(System.in);
 
     public void adicionarContato(Contato contato) {
-        contatos.add(contato);
-    }
-
-    public void listarContatos(){
-        for (Contato contato : contatos) {
-            System.out.println(contato);
+        if (!contatos.contains(contato)) { // Verifica se o contato já existe na lista
+            contatos.add(contato);
+        } else {
+            System.out.println("Este contato já existe na sua lista.");
         }
     }
+
 
     public String categorias(){
         String[] categoria = {"Favoritos", "Trabalho", "Pessoal"};
@@ -47,6 +49,37 @@ public class Agenda {
         System.out.println(contatoFiltrado);
     }
 
+    public void listarContatosPorTipo(List<Contato> contatos, Class<?> tipo, String titulo) {
+        List<Contato> contatosFiltrados = contatos.stream()
+            .filter(c -> tipo.isInstance(c))
+            .collect(Collectors.toList());
+
+        System.out.println("\n" + titulo + ": ");
+        
+        for (Contato contato : contatosFiltrados) {
+            if (tipo.isInstance(contato)) {
+                System.out.print("Nome: " + contato.getNome() + ", Telefone: " + contato.getContato());
+
+                if (tipo == ContatoTelefone.class) {
+                    ContatoTelefone contatoTelefone = (ContatoTelefone) contato;
+                    System.out.println(", Aniversário: " + contatoTelefone.getAniversario());
+                } else if (tipo == ContatoEmail.class) {
+                    ContatoEmail contatoEmail = (ContatoEmail) contato;
+                    System.out.println(", Email: " + contatoEmail.getEmail());
+                } else if (tipo == ContatoWhatsApp.class) {
+                    System.out.println(", Pode realizar chamada de vídeo.");
+                }
+            }
+        }
+    }
+
+    public void listarContatos() {
+        listarContatosPorTipo(contatos, ContatoTelefone.class, "Contatos do Telefone");
+        listarContatosPorTipo(contatos, ContatoEmail.class, "Contatos do Email");
+        listarContatosPorTipo(contatos, ContatoWhatsApp.class, "Contatos do WhatsApp");
+    }
+
+
     public void excluir(){
         System.out.println("Digite o número: ");
         int buscaContato = leitor.nextInt();
@@ -69,5 +102,16 @@ public class Agenda {
         int novoContato = leitor.nextInt();
         contato.setContato(novoContato);
     }
+
+    // public boolean contatoExistente(int contato) {
+    //     for (Contato c : contatos) {
+    //         if (c.getContato() == contato) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
+
     
 }

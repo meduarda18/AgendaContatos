@@ -13,6 +13,18 @@ public class ContatoWhatsApp extends Contato{
         return "\nContatos WhatsApp\nNome: " + getNome() + ", Telefone: " + getContato();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        ContatoWhatsApp outro = (ContatoWhatsApp) obj;
+        return getContato() == outro.getContato();
+    }
+
 
 
 }
