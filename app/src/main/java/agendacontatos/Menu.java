@@ -19,6 +19,10 @@ public class Menu {
         while (opcaoAdicionar != 0) {
             System.out.print("\n***Menu Adicionar*** \n1 - Adicionar em Telefone\n2 - Adicionar em Email\n3 - Adicionar em WhatsApp\n0 - Voltar\nDigite a opção escolhida: ");
             opcaoAdicionar = leitor.nextInt();
+
+            if (opcaoAdicionar == 0) {
+                break;
+            }
                 
             System.out.print("Nome: ");
             String nome = leitor.next();

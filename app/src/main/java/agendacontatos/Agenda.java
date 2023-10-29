@@ -1,10 +1,11 @@
 package agendacontatos;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.Optional;
 
 import agendacontatos.contatos.Contato;
 import agendacontatos.contatos.ContatoEmail;
@@ -107,6 +108,37 @@ public class Agenda {
             }
         } else {
             System.out.println("Contato não encontrado.");
+        }
+    }
+
+    public void exportarContatosParaCSV(String nomeArquivo) {
+        try {
+            FileWriter writer = new FileWriter(nomeArquivo);
+    
+            // Escreve o cabeçalho do CSV
+            writer.write("Nome, Contato, Tipo\n");
+    
+            for (Contato contato : contatos) {
+                String nome = contato.getNome();
+                int contatoValue = contato.getContato();
+                String tipo = "";
+    
+                if (contato instanceof ContatoTelefone) {
+                    tipo = "Telefone";
+                } else if (contato instanceof ContatoEmail) {
+                    tipo = "Email";
+                } else if (contato instanceof ContatoWhatsApp) {
+                    tipo = "WhatsApp";
+                }
+    
+                // Escreve os dados do contato no arquivo CSV
+                writer.write(nome + ", " + contatoValue + ", " + tipo + "\n");
+            }
+    
+            writer.close();
+            System.out.println("Contatos exportados com sucesso para " + nomeArquivo);
+        } catch (IOException e) {
+            System.err.println("Erro ao exportar contatos para CSV: " + e.getMessage());
         }
     }
     

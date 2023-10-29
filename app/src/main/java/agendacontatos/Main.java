@@ -39,6 +39,8 @@ public class Main {
                 } else if (opcao == 5){
                     agenda.editar();
 
+                } else if(opcao == 6){
+                    agenda.exportarContatosParaCSV("contatos.csv");
                 }
             }
         }
