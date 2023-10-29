@@ -1,24 +1,18 @@
 package agendacontatos.contatos;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-// import agendacontatos.RelacionamentoEmail;
 
 public class ContatoEmail extends Contato{
     private String email;
-    // private RelacionamentoEmail relacionamento;
     private String relacionamento;
 
-    public ContatoEmail(String nome, int contato, String email) {
-        super(nome, contato, false);
+    public ContatoEmail(String nome, String sobrenome, int contato, String email) {
+        super(nome, sobrenome, contato, false);
         this.email = email;
     }
 
     // sobrecarga de métodos (construtor), visto que o usuário pode escolher relacionar ou não
-    public ContatoEmail(String nome, int contato, String email, String relacionamento) {
-        super(nome, contato, false);
+    public ContatoEmail(String nome, String sobrenome, int contato, String email, String relacionamento) {
+        super(nome, sobrenome, contato, false);
         this.email = email;
         this.relacionamento = relacionamento;
     }

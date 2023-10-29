@@ -24,14 +24,16 @@ public class Menu {
             if (opcaoAdicionar > 0) {
                 System.out.print("Nome: ");
                 String nomeTelefone = leitor.next();
+                System.out.print("Sobrenome: ");
+                String sobrenomeTelefone = leitor.next();
                 System.out.print("Telefone: ");
                 int telefone = leitor.nextInt();
-
+                
                 switch (opcaoAdicionar) {
                     case 1:
                         System.out.print("Aniversário: ");
                         int aniversario = leitor.nextInt();
-                        agenda.adicionarContato(new ContatoTelefone(nomeTelefone, telefone, aniversario));
+                        agenda.adicionarContato(new ContatoTelefone(nomeTelefone, sobrenomeTelefone, telefone, aniversario));
                         break;
                     case 2:
                         System.out.print("Email: ");
@@ -46,13 +48,13 @@ public class Menu {
                             relacionamento = "Nenhum";
                         }
 
-                        agenda.adicionarContato(new ContatoEmail(nomeTelefone, telefone, email, relacionamento));
+                        agenda.adicionarContato(new ContatoEmail(nomeTelefone, sobrenomeTelefone, telefone, email, relacionamento));
                         break;
                     case 3:
-                        agenda.adicionarContato(new ContatoWhatsApp(nomeTelefone, telefone));
+                        agenda.adicionarContato(new ContatoWhatsApp(nomeTelefone, sobrenomeTelefone, telefone));
                         break;
                 }
             }     
-        }
+        } leitor.close();
     }
 }

@@ -3,8 +3,8 @@ package agendacontatos.contatos;
 public class ContatoTelefone extends Contato{
     private int aniversario;
 
-    public ContatoTelefone(String nome, int contato, int aniversario) {
-        super(nome, contato, false);
+    public ContatoTelefone(String nome, String sobrenome, int contato, int aniversario) {
+        super(nome, sobrenome, contato, false);
         this.aniversario = aniversario;
     }
 
