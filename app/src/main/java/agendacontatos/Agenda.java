@@ -25,7 +25,7 @@ public class Agenda {
     public String categorias(){
         String[] categoria = {"Favoritos", "Trabalho", "Pessoal"};
         
-        System.out.println("Escolha uma categoria:\n1- Favoritos, 2- Trabalho, 3- Pessoal");
+        System.out.print("1 - Favoritos\n2 - Trabalho\n3 - Pessoal\nEscolha uma categoria: ");
         int escolha = leitor.nextInt();
 
         if (escolha == 1) {
@@ -69,8 +69,5 @@ public class Agenda {
         int novoContato = leitor.nextInt();
         contato.setContato(novoContato);
     }
-
-
-
     
 }

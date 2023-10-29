@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
 
-        System.out.print("1- Iniciar o app Agenda de Contatos \n2- Não iniciar o app Agenda de Contatos \nDigite o número da opção escolhida: ");
+        System.out.print("1- Iniciar o app Agenda de Contatos \n2- Não iniciar o app Agenda de Contatos \nDigite a opção escolhida: ");
         int opcao = leitor.nextInt();
 
         if (opcao == 1) {
@@ -30,6 +30,7 @@ public class Main {
             Menu menu = new Menu(agenda);
 
             while (true) {
+<<<<<<< HEAD
                 
                 System.out.println(
                     "\n*** Menu ***\n" +
@@ -40,6 +41,11 @@ public class Main {
                     "5 - Editar contatos\n" +
                     "0 - Sair"
                 );
+=======
+
+                System.out.print("\n*** Menu ***\n1 - Adicionar contato\n2 - Remover contato\n3 - Atualizar contato\n4 - Listar contatos\n0 - Sair\nDigite a opção escolhida: ");
+
+>>>>>>> 11c02ad8ebbd24eb73d5a6c07a91fd20f24d681f
                 
                 opcao = leitor.nextInt(); 
                 if (opcao == 0){
@@ -52,8 +58,15 @@ public class Main {
                     agenda.filtrar();
                 } else if (opcao == 4){
                     agenda.listarContatos();
+<<<<<<< HEAD
                 } else if (opcao == 5){
                     agenda.editar();
+=======
+                } else if (opcao == 2){
+                    
+                } else if (opcao == 3){
+                    
+>>>>>>> 11c02ad8ebbd24eb73d5a6c07a91fd20f24d681f
                 }
             }
         }
