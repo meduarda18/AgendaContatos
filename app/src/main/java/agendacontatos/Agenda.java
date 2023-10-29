@@ -87,21 +87,29 @@ public class Agenda {
         contatos.removeAll(contatoFiltrado);
     }
 
-    public void editar(){
+    public void editar() {
         System.out.println("Digite o número: ");
         int buscaContato = leitor.nextInt();
-        Optional<Contato> contatoParaEditar = contatos.stream().filter(c -> c.getContato() == buscaContato).findFirst(); // retorna o primeiro que aparecer
-
-        Contato contato = contatoParaEditar.get(); 
-
-        System.out.println("Novo nome: ");
-        String novoNome = leitor.next();
-        contato.setNome(novoNome);
-
-        System.out.println("Novo Contato: ");
-        int novoContato = leitor.nextInt();
-        contato.setContato(novoContato);
+        List<Contato> contatosFiltrados = contatos.stream()
+                .filter(c -> c.getContato() == buscaContato)
+                .collect(Collectors.toList());
+    
+        if (!contatosFiltrados.isEmpty()) {
+            System.out.println("Novo nome: ");
+            String novoNome = leitor.next();
+    
+            System.out.println("Novo Contato: ");
+            int novoContato = leitor.nextInt();
+    
+            for (Contato contato : contatosFiltrados) {
+                contato.setNome(novoNome);
+                contato.setContato(novoContato);
+            }
+        } else {
+            System.out.println("Contato não encontrado.");
+        }
     }
+    
 
     // public boolean contatoExistente(int contato) {
     //     for (Contato c : contatos) {
