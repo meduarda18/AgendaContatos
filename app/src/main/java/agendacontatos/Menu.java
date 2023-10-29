@@ -42,7 +42,6 @@ public class Menu {
 
                         if (escolha2 == 1){
                             relacionamento = agenda.categorias();
-                            
                         } else {
                             relacionamento = "Nenhum";
                         }
@@ -53,8 +52,7 @@ public class Menu {
                         agenda.adicionarContato(new ContatoWhatsApp(nomeTelefone, telefone));
                         break;
                 }
-            }
+            }     
         }
     }
-
 }

@@ -7,7 +7,7 @@ import agendacontatos.contatos.Contato;
 import java.util.ArrayList;
 
 
-public class Grupos extends SuaAgenda{
+public class Grupos extends Agenda{
   private String nomeGrupo;  
   private List<Contato>contatosGrupo;
 

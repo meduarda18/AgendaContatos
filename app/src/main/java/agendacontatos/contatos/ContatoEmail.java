@@ -25,7 +25,7 @@ public class ContatoEmail extends Contato{
 
     @Override
     public String toString() {
-        return "Nome: " + getNome() + ", Email: " + email +", Telefone: " + getContato() + ", Relacionamento: " + relacionamento;
+        return "\nContatos Email\nNome: " + getNome() + ", Email: " + email +", Telefone: " + getContato() + ", Relacionamento: " + relacionamento;
     }
 
     public String getEmail() {
