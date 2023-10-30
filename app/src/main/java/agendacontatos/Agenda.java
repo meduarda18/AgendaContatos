@@ -116,10 +116,11 @@ public class Agenda {
             FileWriter writer = new FileWriter(nomeArquivo);
     
             // Escreve o cabeçalho do CSV
-            writer.write("Nome, Contato, Tipo\n");
+            writer.write("Nome, Sobrenome, Contato, Aniversário, Email, Recebebe chamada de vídeo?, Tipo\n");
     
             for (Contato contato : contatos) {
                 String nome = contato.getNome();
+                String sobrenome = contato.getSobrenome();
                 int contatoValue = contato.getContato();
                 String tipo = "";
     
@@ -132,7 +133,20 @@ public class Agenda {
                 }
     
                 // Escreve os dados do contato no arquivo CSV
-                writer.write(nome + ", " + contatoValue + ", " + tipo + "\n");
+                if(contato instanceof ContatoTelefone){
+                    ContatoTelefone contatoTelefone = (ContatoTelefone) contato;
+                    int aniversario = contatoTelefone.getAniversario();
+                    writer.write(nome + ", " + sobrenome + ", " + contatoValue + ", " +  aniversario + ", sem informação " + ", não, " + tipo + "\n");
+
+                } else if (contato instanceof ContatoEmail) {
+                    ContatoEmail contatoEmail = (ContatoEmail) contato;
+                    String email = contatoEmail.getEmail();
+                    writer.write(nome + ", " + sobrenome + ", " + contatoValue + ", sem informação " + ", " +  email +", não, " + tipo + "\n");
+
+                } else {
+                    writer.write(nome + ", " + sobrenome + ", " + contatoValue + ", sem informação " + ", sem informação " +", sim, "  + tipo + "\n");
+                }
+                
             }
     
             writer.close();

@@ -23,6 +23,7 @@ public class Main {
                     "3 - Buscar contato\n" +
                     "4 - Listar contatos\n" +
                     "5 - Editar contatos\n" +
+                    "6 - Exportar para um arquivo em CSV\n" +
                     "0 - Sair"
                 );
                 opcao = leitor.nextInt(); 
