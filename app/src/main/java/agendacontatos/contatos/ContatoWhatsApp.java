@@ -4,8 +4,8 @@ package agendacontatos.contatos;
 public class ContatoWhatsApp extends Contato{
 
     //construtor
-    public ContatoWhatsApp(String nome, String sobrenome, int contato) {
-        super(nome, sobrenome, contato, true);
+    public ContatoWhatsApp(String nome, String sobrenome, int contato, String categoria) {
+        super(nome, sobrenome, contato, true, categoria);
     }
 
     @Override

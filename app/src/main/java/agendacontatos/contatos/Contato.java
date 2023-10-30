@@ -5,13 +5,15 @@ public class Contato {
     private String sobrenome;
     private int contato;
     private boolean chamadaVideo;
+    private String categoria;
 
     // construtor
-    public Contato(String nome,String sobrenome, int contato, boolean chamadaVideo){
+    public Contato(String nome,String sobrenome, int contato, boolean chamadaVideo, String categoria){
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.contato = contato;
         this.chamadaVideo = chamadaVideo;
+        this.categoria = categoria;
 
         if (contato < 0) {
             throw new ContatoNegativoException("Número inválido. Não é possível adicionar número negativo.");

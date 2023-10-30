@@ -3,37 +3,20 @@ package agendacontatos.contatos;
 
 public class ContatoEmail extends Contato{
     private String email;
-    private String relacionamento;
 
-    public ContatoEmail(String nome, String sobrenome, int contato, String email) {
-        super(nome, sobrenome, contato, false);
+    public ContatoEmail(String nome, String sobrenome, int contato, String categoria, String email) {
+        super(nome, sobrenome, contato, false, categoria);
         this.email = email;
-    }
-
-    // sobrecarga de métodos (construtor), visto que o usuário pode escolher relacionar ou não
-    public ContatoEmail(String nome, String sobrenome, int contato, String email, String relacionamento) {
-        super(nome, sobrenome, contato, false);
-        this.email = email;
-        this.relacionamento = relacionamento;
+        if (isValidEmail(email)) {
+            this.email = email;
+        } else {
+            throw new IllegalArgumentException("O email não está em um formato válido.");
+        }
     }
 
     @Override
     public String toString() {
-        return "\nContatos Email\nNome: " + getNome() + ", Email: " + email +", Telefone: " + getContato() + ", Relacionamento: " + relacionamento;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRelacionamento() {
-        return relacionamento;
-    }
-    public void setRelacionamento(String relacionamento) {
-        this.relacionamento = relacionamento;
+        return "\nContatos Email\nNome: " + getNome() + ", Email: " + email +", Telefone: " + getContato();
     }
 
     @Override
@@ -46,6 +29,18 @@ public class ContatoEmail extends Contato{
         }
         ContatoEmail outro = (ContatoEmail) obj;
         return getContato() == outro.getContato();
+    }
+
+    private boolean isValidEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$"; // Padrão de email simples
+        return email.matches(regex);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

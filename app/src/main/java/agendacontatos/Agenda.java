@@ -26,22 +26,22 @@ public class Agenda {
 
 
     public String categorias(){
-        String[] categoria = {"Favoritos", "Trabalho", "Pessoal"};
-        
         System.out.print("1 - Favoritos\n2 - Trabalho\n3 - Pessoal\nEscolha uma categoria: ");
+        
         int escolha = leitor.nextInt();
-
-        if (escolha == 1) {
-            return categoria[0];
-        } else if (escolha == 2) {
-            return categoria[1];
-        } else {
-            return categoria[2];
-        }
-        
-        
-    }
     
+        switch (escolha) {
+            case 1:
+                return "Favoritos";
+            case 2:
+                return "Trabalho";
+            case 3:
+                return "Pessoal";
+            default:
+                return "Nenhum";        
+        
+    } 
+}
 
     public void filtrar(){
         System.out.println("Digite o número: ");
@@ -98,12 +98,16 @@ public class Agenda {
         if (!contatosFiltrados.isEmpty()) {
             System.out.println("Novo nome: ");
             String novoNome = leitor.next();
+
+            System.out.println("Novo nome: ");
+            String novoSobrenome = leitor.next();
     
             System.out.println("Novo Contato: ");
             int novoContato = leitor.nextInt();
     
             for (Contato contato : contatosFiltrados) {
                 contato.setNome(novoNome);
+                contato.setSobrenome(novoSobrenome);
                 contato.setContato(novoContato);
             }
         } else {
@@ -135,7 +139,7 @@ public class Agenda {
                 // Escreve os dados do contato no arquivo CSV
                 if(contato instanceof ContatoTelefone){
                     ContatoTelefone contatoTelefone = (ContatoTelefone) contato;
-                    int aniversario = contatoTelefone.getAniversario();
+                    String aniversario = contatoTelefone.getAniversario();
                     writer.write(nome + ", " + sobrenome + ", " + contatoValue + ", " +  aniversario + ", sem informação " + ", não, " + tipo + "\n");
 
                 } else if (contato instanceof ContatoEmail) {

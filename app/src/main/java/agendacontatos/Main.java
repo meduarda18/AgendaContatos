@@ -32,14 +32,13 @@ public class Main {
                 } else if (opcao == 1){
                     menu.menuAdicionar(opcao);
                 } else if (opcao == 2){
-                    agenda.excluir(); // recebeu argumento
+                    agenda.excluir(); 
                 } else if (opcao == 3){
                     agenda.filtrar();
                 } else if (opcao == 4){
                     agenda.listarContatos();
                 } else if (opcao == 5){
                     agenda.editar();
-
                 } else if(opcao == 6){
                     agenda.exportarContatosParaCSV("contatos.csv");
                 }
