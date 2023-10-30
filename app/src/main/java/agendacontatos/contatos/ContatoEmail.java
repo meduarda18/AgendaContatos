@@ -1,8 +1,10 @@
 package agendacontatos.contatos;
+import java.util.Scanner;
 
 
 public class ContatoEmail extends Contato{
     private String email;
+    Scanner leitor = new Scanner(System.in);
 
     public ContatoEmail(String nome, String sobrenome, int contato, String categoria, String email) {
         super(nome, sobrenome, contato, false, categoria);
@@ -12,6 +14,14 @@ public class ContatoEmail extends Contato{
         } else {
             throw new IllegalArgumentException("O email não está em um formato válido.");
         }
+    }
+
+    @Override
+    public void editar(String novoNome, String novoSobrenome, int novoContato) {
+        super.editar(novoNome, novoSobrenome, novoContato);
+        System.out.println("Digite o novo email (nome@exemplo.com): ");
+        String novoAniversario = leitor.next();
+        setEmail(novoAniversario);
     }
 
     @Override

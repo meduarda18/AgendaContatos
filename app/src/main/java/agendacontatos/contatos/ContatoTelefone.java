@@ -1,7 +1,9 @@
 package agendacontatos.contatos;
+import java.util.Scanner;
 
 public class ContatoTelefone extends Contato{
     private String aniversario;
+    Scanner leitor = new Scanner(System.in);
 
     public ContatoTelefone(String nome, String sobrenome, int contato, String categoria, String aniversario) {
         super(nome, sobrenome, contato, false, categoria);
@@ -12,6 +14,14 @@ public class ContatoTelefone extends Contato{
             throw new IllegalArgumentException("Data de aniversário inválida. Use o formato 'dd/mm/yyyy'.");
         }
 
+    }
+
+    @Override
+    public void editar(String novoNome, String novoSobrenome, int novoContato) {
+        super.editar(novoNome, novoSobrenome, novoContato);
+        System.out.println("Digite o novo aniversário (dd/mm/yyyy): ");
+        String novoAniversario = leitor.next();
+        setAniversario(novoAniversario);
     }
 
     @Override

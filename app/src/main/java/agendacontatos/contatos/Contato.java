@@ -23,6 +23,12 @@ public class Contato {
         }
     }
 
+    public void editar(String novoNome, String novoSobrenome, int novoContato) {
+        this.nome = novoNome;
+        this.sobrenome = novoSobrenome;
+        this.contato = novoContato;
+    }
+
     // setters e getters
     public String getNome() {
         return nome;

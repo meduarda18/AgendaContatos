@@ -112,15 +112,12 @@ public void filtrar() {
         contatos.removeAll(contatoFiltrado);
     }
 
-    public void editar() {
+    public void editar(){
         System.out.println("Digite o número do contato que deseja editar: ");
         int buscaContato = leitor.nextInt();
-        
-        // Filtra os contatos com base no número de contato
-        List<Contato> contatosFiltrados = contatos.stream()
-                .filter(c -> c.getContato() == buscaContato)
-                .collect(Collectors.toList());
-    
+
+        List<Contato> contatosFiltrados = contatos.stream().filter(c -> c.getContato() == buscaContato).collect(Collectors.toList());
+
         if (!contatosFiltrados.isEmpty()) {
             Contato contatoSelecionado = contatosFiltrados.get(0);
             System.out.println("Digite o novo nome: ");
@@ -130,28 +127,18 @@ public void filtrar() {
             System.out.println("Digite o novo número de telefone: ");
             int novoContato = leitor.nextInt();
 
-            contatoSelecionado.setNome(novoNome);
-            contatoSelecionado.setSobrenome(novoSobrenome);
-            contatoSelecionado.setContato(novoContato);
-    
             if (contatoSelecionado instanceof ContatoTelefone) {
                 ContatoTelefone contatoTelefone = (ContatoTelefone) contatoSelecionado;
-                System.out.println("Digite o novo aniversário (dd/mm/yyyy): ");
-                String novoAniversario = leitor.next();
-
-                contatoTelefone.setAniversario(novoAniversario);
+                contatoTelefone.editar(novoNome, novoSobrenome, novoContato);
+            
             } else if (contatoSelecionado instanceof ContatoEmail) {
                 ContatoEmail contatoEmail = (ContatoEmail) contatoSelecionado;
-                System.out.println("Digite o novo endereço de email: ");
-                String novoEmail = leitor.next();
-                
-                contatoEmail.setEmail(novoEmail);
-            } 
+                contatoEmail.editar(novoNome, novoSobrenome, novoContato);
+            }
         } else {
             System.out.println("Contato não encontrado.");
         }
     }
-    
 
     public void exportarContatosParaCSV(String nomeArquivo) {
         try {
