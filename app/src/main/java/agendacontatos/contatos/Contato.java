@@ -54,6 +54,14 @@ public class Contato {
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 }
 
 

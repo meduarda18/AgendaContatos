@@ -26,36 +26,60 @@ public class Agenda {
 
 
     public String categorias(){
-        System.out.print("1 - Favoritos\n2 - Trabalho\n3 - Pessoal\nEscolha uma categoria: ");
-        
+        System.out.println("Deseja adicionar alguma categoria? 1- Sim  2- Não");
         int escolha = leitor.nextInt();
-    
-        switch (escolha) {
-            case 1:
-                return "Favoritos";
-            case 2:
-                return "Trabalho";
-            case 3:
-                return "Pessoal";
-            default:
-                return "Nenhum";        
+        if (escolha == 1) {
+            System.out.print("1 - Favoritos\n2 - Trabalho\n3 - Pessoal\nEscolha uma categoria: ");
         
-    } 
+            int escolha2 = leitor.nextInt();
+        
+            switch (escolha2) {
+                case 1:
+                    return "Favoritos";
+                case 2:
+                    return "Trabalho";
+                case 3:
+                    return "Pessoal";
+                default:
+                    return "Nenhum";
+            }
+        } else {
+            return "Contato adicionado com sucesso!";
+        }
 }
 
-    public void filtrar(){
-        System.out.println("Digite o número: ");
+public void filtrar() {
+    System.out.println("Escolha uma opção de busca: ");
+    System.out.println("1 - Buscar por número de contato");
+    System.out.println("2 - Buscar por categoria");
+    
+    int escolhaFiltro = leitor.nextInt();
+    
+    if (escolhaFiltro == 1) {
+        // Filtro por número de contato
+        System.out.println("Digite o número do contato: ");
         int buscaContato = leitor.nextInt();
-        List<Contato> contatoFiltrado = contatos.stream().filter(c -> c.getContato() == buscaContato).toList();
-        System.out.println(contatoFiltrado);
+        List<Contato> contatosFiltrados = contatos.stream()
+                .filter(c -> c.getContato() == buscaContato)
+                .collect(Collectors.toList());
+        System.out.println(contatosFiltrados);
+    } else if (escolhaFiltro == 2) {
+        // Filtro por categoria
+        System.out.println("Digite a categoria desejada (Favoritos, Trabalho, Pessoal): ");
+        String categoria = leitor.next();
+        List<Contato> contatosFiltrados = contatos.stream()
+                .filter(c -> c.getCategoria().equalsIgnoreCase(categoria))
+                .collect(Collectors.toList());
+        System.out.println(contatosFiltrados);
     }
+}
 
     public void listarContatosPorTipo(List<Contato> contatos, Class<?> tipo, String titulo) {
         List<Contato> contatosFiltrados = contatos.stream()
             .filter(c -> tipo.isInstance(c))
             .collect(Collectors.toList());
 
-        System.out.println("\n" + titulo + ": ");
+        System.out.println("\n" + titulo);
         
         for (Contato contato : contatosFiltrados) {
             if (tipo.isInstance(contato)) {
@@ -75,9 +99,9 @@ public class Agenda {
     }
 
     public void listarContatos() {
-        listarContatosPorTipo(contatos, ContatoTelefone.class, "Contatos do Telefone");
-        listarContatosPorTipo(contatos, ContatoEmail.class, "Contatos do Email");
-        listarContatosPorTipo(contatos, ContatoWhatsApp.class, "Contatos do WhatsApp");
+        listarContatosPorTipo(contatos, ContatoTelefone.class, "--- Contatos do Telefone ---");
+        listarContatosPorTipo(contatos, ContatoEmail.class, "--- Contatos do Email ---");
+        listarContatosPorTipo(contatos, ContatoWhatsApp.class, "--- Contatos do WhatsApp ---");
     }
 
 
@@ -89,31 +113,45 @@ public class Agenda {
     }
 
     public void editar() {
-        System.out.println("Digite o número: ");
+        System.out.println("Digite o número do contato que deseja editar: ");
         int buscaContato = leitor.nextInt();
+        
+        // Filtra os contatos com base no número de contato
         List<Contato> contatosFiltrados = contatos.stream()
                 .filter(c -> c.getContato() == buscaContato)
                 .collect(Collectors.toList());
     
         if (!contatosFiltrados.isEmpty()) {
-            System.out.println("Novo nome: ");
+            Contato contatoSelecionado = contatosFiltrados.get(0);
+            System.out.println("Digite o novo nome: ");
             String novoNome = leitor.next();
-
-            System.out.println("Novo nome: ");
+            System.out.println("Digite o novo sobrenome: ");
             String novoSobrenome = leitor.next();
-    
-            System.out.println("Novo Contato: ");
+            System.out.println("Digite o novo número de telefone: ");
             int novoContato = leitor.nextInt();
+
+            contatoSelecionado.setNome(novoNome);
+            contatoSelecionado.setSobrenome(novoSobrenome);
+            contatoSelecionado.setContato(novoContato);
     
-            for (Contato contato : contatosFiltrados) {
-                contato.setNome(novoNome);
-                contato.setSobrenome(novoSobrenome);
-                contato.setContato(novoContato);
-            }
+            if (contatoSelecionado instanceof ContatoTelefone) {
+                ContatoTelefone contatoTelefone = (ContatoTelefone) contatoSelecionado;
+                System.out.println("Digite o novo aniversário (dd/mm/yyyy): ");
+                String novoAniversario = leitor.next();
+
+                contatoTelefone.setAniversario(novoAniversario);
+            } else if (contatoSelecionado instanceof ContatoEmail) {
+                ContatoEmail contatoEmail = (ContatoEmail) contatoSelecionado;
+                System.out.println("Digite o novo endereço de email: ");
+                String novoEmail = leitor.next();
+                
+                contatoEmail.setEmail(novoEmail);
+            } 
         } else {
             System.out.println("Contato não encontrado.");
         }
     }
+    
 
     public void exportarContatosParaCSV(String nomeArquivo) {
         try {
@@ -152,24 +190,11 @@ public class Agenda {
                 }
                 
             }
-    
             writer.close();
             System.out.println("Contatos exportados com sucesso para " + nomeArquivo);
         } catch (IOException e) {
             System.err.println("Erro ao exportar contatos para CSV: " + e.getMessage());
         }
     }
-    
-
-    // public boolean contatoExistente(int contato) {
-    //     for (Contato c : contatos) {
-    //         if (c.getContato() == contato) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-
-
     
 }
