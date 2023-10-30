@@ -1,4 +1,4 @@
-package agendacontatos.contatos;
+package agendacontatos.excecoes;
 
 public class ContatoNegativoException extends RuntimeException {
     public ContatoNegativoException(String message) {

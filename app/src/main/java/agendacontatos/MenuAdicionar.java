@@ -6,10 +6,10 @@ import agendacontatos.contatos.ContatoEmail;
 import agendacontatos.contatos.ContatoTelefone;
 import agendacontatos.contatos.ContatoWhatsApp;
 
-public class Menu {
+public class MenuAdicionar {
     private Agenda agenda; 
 
-    public Menu(Agenda agenda) {
+    public MenuAdicionar(Agenda agenda) {
         this.agenda = agenda;
     }
 
@@ -23,7 +23,7 @@ public class Menu {
             if (opcaoAdicionar == 0) {
                 break;
             }
-                
+
             System.out.print("Nome: ");
             String nome = leitor.next();
             System.out.print("Sobrenome: ");
@@ -31,8 +31,6 @@ public class Menu {
             System.out.print("Contato: ");
             int contato = leitor.nextInt();
 
-            
-    
             switch (opcaoAdicionar) {
                 case 1:
                     System.out.print("Aniversário: ");
@@ -51,7 +49,6 @@ public class Menu {
                     agenda.adicionarContato(new ContatoWhatsApp(nome, sobrenome, contato, categoria ));
                     break;
             }
-
         }
     }
 }
