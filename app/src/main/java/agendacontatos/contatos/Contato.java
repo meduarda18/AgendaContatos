@@ -1,5 +1,9 @@
 package agendacontatos.contatos;
 
+import agendacontatos.excecoes.ContatoNegativoException;
+
+import agendacontatos.excecoes.ContatoInvalidoException;
+
 public class Contato {
     private String nome;
     private String sobrenome;

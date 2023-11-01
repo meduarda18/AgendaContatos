@@ -12,7 +12,7 @@ public class Main {
 
         if (opcao == 1) {
             Agenda agenda = new Agenda();
-            Menu menu = new Menu(agenda);
+            MenuAdicionar menu = new MenuAdicionar(agenda);
 
             while (true) {
                 
