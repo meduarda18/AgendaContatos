@@ -5,6 +5,7 @@ import java.util.Scanner;
 import agendacontatos.contatos.ContatoEmail;
 import agendacontatos.contatos.ContatoTelefone;
 import agendacontatos.contatos.ContatoWhatsApp;
+import agendacontatos.excecoes.ContatoInvalidoException;
 
 public class MenuAdicionar {
     private Agenda agenda; 
@@ -18,8 +19,14 @@ public class MenuAdicionar {
     
         while (opcaoAdicionar != 0) {
             System.out.print("\n***Menu Adicionar*** \n1 - Adicionar em Telefone\n2 - Adicionar em Email\n3 - Adicionar em WhatsApp\n0 - Voltar\nDigite a opção escolhida: ");
+
             opcaoAdicionar = leitor.nextInt();
 
+            
+            if (opcaoAdicionar < -1 || opcaoAdicionar > 3){
+                System.out.println("Opção inválida, digite um número entre 0 e 3 (inclusive).");
+                opcaoAdicionar = leitor.nextInt(); 
+            } 
             if (opcaoAdicionar == 0) {
                 break;
             }
@@ -49,8 +56,8 @@ public class MenuAdicionar {
                     agenda.adicionarContato(new ContatoWhatsApp(nome, sobrenome, contato, categoria ));
                     break;
             }
+
+            
         }
     }
 }
-
-

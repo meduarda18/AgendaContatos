@@ -26,7 +26,14 @@ public class Main {
                     "6 - Exportar para um arquivo em CSV\n" +
                     "0 - Sair"
                 );
+
                 opcao = leitor.nextInt(); 
+
+                if (opcao < -1 || opcao > 6){
+                    System.out.println("Opção inválida, digite um número entre 0 e 6 (inclusive).");
+                    opcao = leitor.nextInt();
+                }
+
                 if (opcao == 0){
                     break;
                 } else if (opcao == 1){
